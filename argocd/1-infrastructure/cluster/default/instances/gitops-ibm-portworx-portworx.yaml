@@ -1,0 +1,22 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: gitops-ibm-portworx-portworx
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  destination:
+    namespace: gitops-ibm-portworx
+    server: https://kubernetes.default.svc
+  project: 1-infrastructure
+  source:
+    path: payload/1-infrastructure/namespace/gitops-ibm-portworx/portworx
+    repoURL: https://github.com/cloud-native-toolkit-test/gitops-ibm-portworx-ocp4
+    targetRevision: main
+    helm:
+      releaseName: portworx
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+  ignoreDifferences: []
