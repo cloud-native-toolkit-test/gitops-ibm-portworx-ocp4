@@ -3,4 +3,3 @@ kind: Kustomization
 resources:
   - base/namespace-gitops-ibm-portworx.yaml
   - instances/gitops-ibm-portworx-portworx.yaml
-  - operators/openshift-operators-ibmcloud-operator.yaml
